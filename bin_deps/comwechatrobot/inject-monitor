@@ -1,0 +1,18 @@
+#!/usr/bin/env bash
+INJMON_LOG_FILE=${INJMON_LOG_FILE:-/dev/stdout}
+function monitor() {
+    while :
+    do
+        if [ "$INJ_CONDITION" != "" ]; then
+            bash -c "$INJ_CONDITION"
+            if [ "$?" = "0" ]; then
+                #echo "inject condition pass"
+                continue
+            fi
+            echo "inject condition not pass. starting..."
+        fi
+        inject-dll >${INJMON_LOG_FILE} 2>&1
+        sleep 10
+    done
+}
+monitor

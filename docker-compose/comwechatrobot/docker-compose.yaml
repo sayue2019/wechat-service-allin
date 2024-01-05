@@ -1,0 +1,35 @@
+version: "3.3"
+
+services:
+    wechat-service:
+        image: "sayue/wechat-service-comwechatrobot:latest"
+        restart: unless-stopped
+        container_name: "wechat-service-comwechatrobot"
+        environment:
+            VNC_PASSWORD: "vncpass"
+            TARGET_AUTO_RESTART: "yes"
+            INJMON_LOG_FILE: "/dev/stdout"
+            # 微信的登陆态判断接口
+            INJ_CONDITION: "[ \"`sudo netstat -tunlp | grep 19088`\" != '' ] && exit 0 ; sleep 5 ; curl 'http://127.0.0.1:8680/hi' 2>/dev/null | grep -P 'code.:0'"
+            HOOK_PROC_NAME: "WeChat"
+            TARGET_CMD: "wechat-start"
+            HOOK_DLL: "auto.dll"
+            #HTTP转发设置
+            FORWARD_URL: "http://127.0.0.1:19088"
+            LISTEN_PORT: "5999"
+            ACCESS_PASSWORD: "wechat5999"
+            FOR_CONDITION: "[ \"`sudo netstat -tunlp | grep 5999`\" != '' ] && exit 0"
+            #optional INJMON_LOG_FILE: "/dev/null"
+            #optional TARGET_LOG_FILE: "/dev/stdout"
+        ports:
+            - "8088:8080" # noVNC
+            #- "19088:19088" # websocket server
+            - "7777:5999" # forward server
+            #- "5900:5900" # vnc server
+        volumes:
+              - "~/bread/.wechat/WeChat Files/:/home/app/WeChat Files/"
+              - "~/bread/.wechat/Applcation Data/:/home/app/.wine/drive_c/users/user/Application Data/"
+              - "~/bread/external:/home/app/external"
+        extra_hosts:
+            - "dldir1.qq.com:127.0.0.1"
+        tty: true

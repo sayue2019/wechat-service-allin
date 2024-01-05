@@ -1,0 +1,18 @@
+#!/usr/bin/env bash
+FORMON_LOG_FILE=${FORMON_LOG_FILE:-/dev/stdout}
+function monitor() {
+    while :
+    do
+        if [ "$FOR_CONDITION" != "" ]; then
+            bash -c "$FOR_CONDITION"
+            if [ "$?" = "0" ]; then
+                #echo "http-forward is running."
+                continue
+            fi
+            echo "http-forward isn't running. starting..."
+        fi
+        http-forward
+        sleep 10
+    done
+}
+monitor
