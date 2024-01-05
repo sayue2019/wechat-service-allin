@@ -21,17 +21,25 @@ ComWeChatRobot 功能最强，但是版本过旧已经很久没更新了，最�
 ## 快速开始
 
 1. **设置脚本权限**  
-   允许执行 `build-injector-box.sh` 脚本。
+修改build-injector-box.sh脚本中最顶部的配置
+```sh
+wechat_version="3.9.2.23" # wechat版本
+injector_name="wechat-bot" # 需要注入的wechat服务，可选：comwechatrobot(3.7.0.30)，wechat-bot(3.9.2.23), wxhelper(3.9.2.23)
+
+```
+
+2. **设置脚本权限**  
+允许执行 `build-injector-box.sh` 脚本。
 ```sh
 chmod +x build-injector-box.sh
 ```
-2. **构建注入器和微信服务**  
+3. **构建注入器和微信服务**  
 运行脚本以构建和设置所需的 Docker 容器。
 ```sh
    ./build-injector-box.sh
 ```
 
-3. **启动服务**  
+4. **启动服务**  
 使用 Docker Compose 启动服务。
 ```sh
 docker-compose up

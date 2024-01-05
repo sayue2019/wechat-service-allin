@@ -1,8 +1,8 @@
 #!/usr/bin/env bash
 
 # Variables
-wechat_version="3.7.0.30" # wechat版本
-injector_name="comwechatrobot" # 需要注入的wechat服务，可选：comwechatrobot(3.7.0.30)，wechat_bot(3.9.2.23), wxhelper(3.9.2.23)
+wechat_version="3.9.2.23" # wechat版本
+injector_name="wechat-bot" # 需要注入的wechat服务，可选：comwechatrobot(3.7.0.30)，wechat-bot(3.9.2.23), wxhelper(3.9.2.23)
 injector_box_dir="docker_buiding/injector-box"
 wechat_box_dir="${injector_box_dir}/wechat-box"
 
