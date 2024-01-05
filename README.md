@@ -20,7 +20,7 @@ ComWeChatRobot 功能最强，但是版本过旧已经很久没更新了，最�
 
 ## 快速开始
 
-1. **设置脚本权限**  
+1. **修改参数配置对应的版本**  
 修改build-injector-box.sh脚本中最顶部的配置
 ```sh
 wechat_version="3.9.2.23" # wechat版本
