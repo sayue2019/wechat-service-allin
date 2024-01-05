@@ -6,17 +6,20 @@ services:
         restart: unless-stopped
         container_name: "wechat-service-wechat-bot"
         environment:
+            #vnc访问密码
             VNC_PASSWORD: "vncpass"
             TARGET_AUTO_RESTART: "yes"
             INJMON_LOG_FILE: "/dev/stdout"
-            # 微信的登陆态判断接口
+            # dll注入状态判断接口
             INJ_CONDITION: "[  \"`ps -aux | grep funtool | grep -v grep`\" != ''  ] && exit 0"
             HOOK_PROC_NAME: "WeChat"
             TARGET_CMD: "wechat-start"
             HOOK_DLL: "auto.dll"
-            #HTTP转发设置
+            #HTTP转发地址设置
             FORWARD_URL: "http://127.0.0.1:5555"
+            #http转发端口设置
             LISTEN_PORT: "5999"
+            #http访问密码设置
             ACCESS_PASSWORD: "wechat5999"
             FOR_CONDITION: "[ \"`sudo netstat -tunlp | grep 5999`\" != '' ] && exit 0"
             #optional INJMON_LOG_FILE: "/dev/null"
@@ -33,3 +36,5 @@ services:
         extra_hosts:
             - "dldir1.qq.com:127.0.0.1"
         tty: true
+
+#http://localhost:5999/api/?type=0&password=wechat5999

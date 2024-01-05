@@ -6,6 +6,7 @@
 
 - 支持多版本微信运行环境
 - 允许注入不同的第三方服务
+- 增加了http转发，访问api服务增加授权
 - 容易配置和部署
 
 ## 目前支持第三方服务
@@ -68,7 +69,7 @@ docker-compose up
 - `update_git_repo`: 克隆或更新 Git 仓库。
 - `download_file`: 下载必要的文件。
 - `run_vnc_auth`: 复制 VNC 相关文件。
-- `run_http_frward`: 复制 HTTP 转发相关文件。
+- `run_http_frward`: 复制 HTTP 转发相关文件，如在内网使用不需要转发在脚本中注释掉。
 - `injector_select`: 根据所选注入器进行配置。
 - `build_docker_image`: 构建 Docker 镜像。
 
@@ -107,33 +108,32 @@ version: "3.3"
 
 services:
     wechat-service:
-        image: "sayue/wechat-service-comwechatrobot:latest"
+        image: "sayue/wechat-service-wechat-bot:latest"
         restart: unless-stopped
-        container_name: "wechat-service-comwechatrobot"
+        container_name: "wechat-service-wechat-bot"
         environment:
             #vnc访问密码
             VNC_PASSWORD: "vncpass"
             TARGET_AUTO_RESTART: "yes"
             INJMON_LOG_FILE: "/dev/stdout"
             # dll注入状态判断接口
-            INJ_CONDITION: "[ \"`sudo netstat -tunlp | grep 19088`\" != '' ] && exit 0 ; sleep 5 ; curl 'http://127.0.0.1:8680/hi' 2>/dev/null | grep -P 'code.:0'"
+            INJ_CONDITION: "[  \"`ps -aux | grep funtool | grep -v grep`\" != ''  ] && exit 0"
             HOOK_PROC_NAME: "WeChat"
             TARGET_CMD: "wechat-start"
             HOOK_DLL: "auto.dll"
             #HTTP转发地址设置
-            FORWARD_URL: "http://127.0.0.1:19088"
+            FORWARD_URL: "http://127.0.0.1:5555"
             #http转发端口设置
             LISTEN_PORT: "5999"
             #http访问密码设置
             ACCESS_PASSWORD: "wechat5999"
-            #HTTP转发状态判断接口
             FOR_CONDITION: "[ \"`sudo netstat -tunlp | grep 5999`\" != '' ] && exit 0"
             #optional INJMON_LOG_FILE: "/dev/null"
             #optional TARGET_LOG_FILE: "/dev/stdout"
         ports:
-            - "8088:8080" # noVNC
+            - "8080:8080" # noVNC
             #- "19088:19088" # websocket server
-            - "7777:5999" # forward server
+            - "5999:5999" # forward server
             #- "5900:5900" # vnc server
         volumes:
               - "~/bread/.wechat/WeChat Files/:/home/app/WeChat Files/"
@@ -142,6 +142,9 @@ services:
         extra_hosts:
             - "dldir1.qq.com:127.0.0.1"
         tty: true
+
+#访问api，ACCESS_PASSWORD: wechat5999密码和端口自行修改
+#http://localhost:5999/api/?type=0&password=wechat5999
 
 ```
 

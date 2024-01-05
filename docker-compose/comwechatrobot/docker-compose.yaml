@@ -22,9 +22,9 @@ services:
             #optional INJMON_LOG_FILE: "/dev/null"
             #optional TARGET_LOG_FILE: "/dev/stdout"
         ports:
-            - "8088:8080" # noVNC
+            - "8080:8080" # noVNC
             #- "19088:19088" # websocket server
-            - "7777:5999" # forward server
+            - "5999:5999" # forward server
             #- "5900:5900" # vnc server
         volumes:
               - "~/bread/.wechat/WeChat Files/:/home/app/WeChat Files/"
