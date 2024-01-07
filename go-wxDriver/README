@@ -1,5 +1,5 @@
 GOOS=windows GOARCH=386 go build -o wxDriver.exe main.go
 
-编译wxDriver.exe用于注入https://github.com/ljc545w/ComWeChatRobot/项目的相关dll
+编译wxDriver.exe用于注入ComWeChatRobot项目的相关dll：https://github.com/ljc545w/ComWeChatRobot/     
 
 一个有意思的项目可以参考：https://github.com/duo/matrix-wechat-agent/

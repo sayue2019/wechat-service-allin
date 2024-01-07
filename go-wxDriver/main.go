@@ -60,6 +60,7 @@ func main() {
     }
     log.Printf("Latest WeChat version: %s", latestVersion)
 
+    //伪装微信版本为最新版
     apiResponse, err := postWechatHttpApi(35, port, map[string]string{"version": latestVersion})
     if err != nil {
         log.Fatalf("Failed to set WeChat version: %v", err)
