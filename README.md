@@ -63,6 +63,18 @@ docker-compose up
 ### 主脚本：`build-injector-box.sh`
 
 此脚本是项目的核心，用于设置目录、更新 Git 仓库、下载文件、运行 VNC 授权、运行 HTTP 转发、选择注入器和构建 Docker 镜像。
+脚测试环境为mac os和linux，如果想在windows中运行，请安装Windows Subsystem for Linux (WSL)
+
+#### 运行依赖：
+- `docker`: 脚本中使用了 Docker 来构建和运行容器。确保你的系统中安装了 Docker 并且能够正常运行。
+- `wget`: 用于下载文件。这个工具通常在大多数 Linux 发行版中预安装，但如果没有，你需要手动安装它。
+- `mkdir, cp, echo` 等基础 Shell 命令: 这些命令用于创建目录、复制文件和显示信息，通常都是 Shell 的一部分，不需要额外安装。
+- `sudo`: 用于以超级用户权限执行命令，特别是在构建 Docker 镜像时。确保你的用户账户有执行 sudo 命令的权限。在 Windows 上，sudo 命令并不适用。
+- `Git`: 用于克隆和更新 Git 仓库。你提到了除了 Git 还需要哪些支持，所以我假设 Git 已经安装。
+- `Internet 连接`: 用于从github远程仓库克隆代码和下载文件。
+- `Bash 环境`: 这个脚本是用 Bash 编写的，需要在 Bash 环境下运行。
+
+
 
 #### 功能说明：
 
