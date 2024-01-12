@@ -47,6 +47,13 @@ chmod +x build-injector-box.sh
 docker-compose up
 ```
 
+## 常见错误
+**出错一般都是从github下载文件不完整的原因**，最近国内网络连接github和docker都不太稳定，梯子自备或者手动下载解压到对应目录。
+- 错误:`Defaulting to search window name, class, and classname`
+安装wechat时出错，通常是因为下载的安装包不完整，导致不能正常完成安装
+
+
+
 ## 配置选项
 
 - **微信版本**  
