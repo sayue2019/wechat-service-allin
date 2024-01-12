@@ -47,6 +47,11 @@ chmod +x build-injector-box.sh
 docker-compose up
 ```
 
+## 更新记录
+
+### 2024年1月12日
+- **新增功能**: 增加了修改 Docker 镜像内部 VNC 端口的配置文件。这个改变允许用户自定义 VNC 端口，以避免与 hook 服务端口发生冲突，提高了灵活性和兼容性。
+
 ## 常见错误
 **出错一般都是从github下载文件不完整的原因**，最近国内网络连接github和docker都不太稳定，梯子自备或者手动下载解压到对应目录。
 - 错误:`Defaulting to search window name, class, and classname`
