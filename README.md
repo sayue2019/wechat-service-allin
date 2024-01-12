@@ -70,7 +70,8 @@ docker-compose up
 ### 主脚本：`build-injector-box.sh`
 
 此脚本是项目的核心，用于设置目录、更新 Git 仓库、下载文件、运行 VNC 授权、运行 HTTP 转发、选择注入器和构建 Docker 镜像。
-脚测试环境为mac os和linux，如果想在windows中运行，请安装Windows Subsystem for Linux (WSL)
+脚测试环境为mac os和linux，
+**如果想在windows中运行，请安装Windows Subsystem for Linux (WSL)**
 
 #### 运行依赖：
 - `docker`: 脚本中使用了 Docker 来构建和运行容器。确保你的系统中安装了 Docker 并且能够正常运行。
