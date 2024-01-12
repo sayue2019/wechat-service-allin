@@ -35,6 +35,7 @@ run_vnc_auth() {
     cp vnc/index.html "${injector_box_dir}/root/"
     cp vnc/inj-entrypoint.sh "${injector_box_dir}/root/"
     cp vnc/x11vnc.conf "${wechat_box_dir}/root/wechat-etc/supervisord.d"
+    cp vnc/websockify.conf "${wechat_box_dir}/root/wechat-etc/supervisord.d"
 }
 
 run_http_frward() {
