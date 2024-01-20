@@ -10,7 +10,7 @@ services:
             TARGET_AUTO_RESTART: "yes"
             INJMON_LOG_FILE: "/dev/stdout"
             # 微信的登陆态判断接口
-            INJ_CONDITION: "[ \"`sudo netstat -tunlp | grep 19088`\" != '' ] && exit 0; sleep 5 ; curl 'http://127.0.0.1:8680/hi' 2>/dev/null | grep -P 'code.:0'"
+            INJ_CONDITION: "[ -n "$(sudo netstat -tunlp | grep 19088)" ] && exit 0; sleep 5 ; curl 'http://127.0.0.1:8680/hi' 2>/dev/null | grep -P 'code.:0'"
             HOOK_PROC_NAME: "WeChat"
             TARGET_CMD: "wechat-start"
             HOOK_DLL: "auto.dll"
@@ -18,7 +18,7 @@ services:
             FORWARD_URL: "http://127.0.0.1:19088"
             LISTEN_PORT: "5999"
             ACCESS_PASSWORD: "wechat5999"
-            FOR_CONDITION: "[ \"`sudo netstat -tunlp | grep 5999`\" != '' ] && exit 0"
+            FOR_CONDITION: "[ -n "$(sudo netstat -tunlp | grep 5999)" ] && exit 0"
             #optional INJMON_LOG_FILE: "/dev/null"
             #optional TARGET_LOG_FILE: "/dev/stdout"
         ports:

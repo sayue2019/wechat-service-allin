@@ -86,7 +86,7 @@ injector_select() {
 }
 
 build_docker_image() {
-    (cd "$injector_box_dir" && sudo docker build -t "sayue/wechat-service-${injector_name}:latest" .)
+    (cd "$injector_box_dir" && sudo docker build -t "sayue/wechat-service-${injector_name}:latest" . --progress=plain)
 }
 
 # Script execution

@@ -1,5 +1,6 @@
 #!/usr/bin/env bash
-sudo rm /tmp/.X0-lock
+
+sudo rm /tmp/.X0-lock || true
 #为vnc添加访问权限
 sudo cp /index.html /usr/share/novnc/
 mkdir -p /home/app/.vnc
