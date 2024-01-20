@@ -3,12 +3,28 @@
 微信作为一个服务运行在 Docker 容器中。本项目旨在提供一个简易方式来构建和运行一个微信服务，它允许通过 Docker 容器注入不同版本的微信以及相关的第三方服务。
 ![echo](https://github.com/sayue2019/wechat-service-allin/blob/master/screenshot/screenshot.jpg)
 
+
 ## 功能
 
 - 支持多版本微信运行环境
 - 允许注入不同的第三方服务
 - 增加了http转发，访问api服务增加授权
 - 容易配置和部署
+- **容器内wine仅支持运行32位程序**
+
+## 更新记录
+
+### 2024年1月20日
+- **修复功能**: 已成功修复了一个小型错误，并更新了comwechatrobot所使用的wxDriver.exe文件。
+
+### 2024年1月12日
+- **新增功能**: 增加了修改 Docker 镜像内部 VNC 端口的配置文件。这个改变允许用户自定义 VNC 端口，以避免与 hook 服务端口发生冲突，提高了灵活性和兼容性。
+
+## 常见错误
+**通常情况下，错误发生的原因是从 GitHub 下载的文件不完整**，这通常是由于网络连接到 GitHub、Docker 以及在容器内使用 Python 进行安装过程中的网络不稳定导致的。建议准备稳定的网络代理，或者手动下载所需文件并解压到相应目录以解决这一问题。
+- 错误提示:`Defaulting to search window name, class, and classname`
+可能原因：在安装 WeChat 时遇到错误，通常是由于下载的安装包不完整，从而无法正常完成安装流程。建议检查安装包的完整性，或尝试重新下载安装包以解决该问题。
+
 
 ## 目前支持第三方服务
 
@@ -46,19 +62,6 @@ chmod +x build-injector-box.sh
 ```sh
 docker-compose up
 ```
-
-## 更新记录
-
-### 2024年1月20日
-- **修复功能**: 已成功修复了一个小型错误，并更新了comwechatrobot所使用的wxDriver.exe文件。
-
-### 2024年1月12日
-- **新增功能**: 增加了修改 Docker 镜像内部 VNC 端口的配置文件。这个改变允许用户自定义 VNC 端口，以避免与 hook 服务端口发生冲突，提高了灵活性和兼容性。
-
-## 常见错误
-**出错一般都是从github下载文件不完整的原因**，最近国内网络连接github和docker都不太稳定，梯子自备或者手动下载解压到对应目录。
-- 错误:`Defaulting to search window name, class, and classname`
-安装wechat时出错，通常是因为下载的安装包不完整，导致不能正常完成安装
 
 
 
