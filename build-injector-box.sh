@@ -3,6 +3,8 @@
 # Variables
 wechat_version="3.9.2.23" # wechat版本
 injector_name="wechat-bot" # 需要注入的wechat服务，可选：comwechatrobot(3.7.0.30)，wechat-bot(3.9.2.23), wxhelper(3.9.2.23)
+ENABLE_HTTP_FORWARD=true  # Set to false to disable HTTP forward setup
+
 injector_box_dir="docker_buiding/injector-box"
 wechat_box_dir="${injector_box_dir}/wechat-box"
 
@@ -96,6 +98,11 @@ update_git_repo "https://github.com/sayue2019/wechat-box" "$wechat_box_dir"
 download_file "https://github.com/tom-snow/wechat-windows-versions/releases/download/v${wechat_version}/WeChatSetup-${wechat_version}.exe" "${wechat_box_dir}/root/WeChatSetup.exe"
 download_file "https://github.com/sayue2019/go-http-forward/releases/download/win86/http_forwarder.exe" "${injector_box_dir}/root/bin/http_forwarder.exe"
 run_vnc_auth
-run_http_frward
+
+# Run HTTP forward setup if enabled
+if [ "$ENABLE_HTTP_FORWARD" = true ]; then
+    run_http_frward
+fi
+
 injector_select "$injector_name"
 build_docker_image
