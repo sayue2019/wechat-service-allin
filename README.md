@@ -3,7 +3,6 @@
 微信作为一个服务运行在 Docker 容器中。本项目旨在提供一个简易方式来构建和运行一个微信服务，它允许通过 Docker 容器注入不同版本的微信以及相关的第三方服务。
 ![echo](https://github.com/sayue2019/wechat-service-allin/blob/master/screenshot/screenshot.jpg)
 
-## QQ交流群：766687648
 
 ## 功能
 
@@ -182,6 +181,8 @@ services:
 
 ```
 
+## QQ交流群：766687648
+![echo](https://github.com/sayue2019/wechat-service-allin/blob/master/1715138459905_temp_qrcode_share_9993.png)
 
 ## 引用和参考
 
