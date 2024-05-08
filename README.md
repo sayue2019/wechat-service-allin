@@ -182,7 +182,8 @@ services:
 ```
 
 ## QQ交流群：766687648
-![echo](https://github.com/sayue2019/wechat-service-allin/blob/master/1715138459905_temp_qrcode_share_9993.png)
+<img src="https://github.com/sayue2019/wechat-service-allin/blob/master/1715138459905_temp_qrcode_share_9993.png" width="500">
+
 
 ## 引用和参考
 
