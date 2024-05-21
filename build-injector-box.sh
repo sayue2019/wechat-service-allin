@@ -72,7 +72,7 @@ injector_select() {
     local injector_name=$1
 
     case "$injector_name" in
-        "wechat_bot")
+        "wechat-bot")
             injector_wechat_bot
             ;;
         "wxhelper")
